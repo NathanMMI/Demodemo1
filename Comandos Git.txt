@@ -1,0 +1,154 @@
+estos comandos so para configurar git
+
+configuracion global para que aparesca mi nombre en cada repositorio creado
+$ git config --global user.name "Irvin Medina"
+
+conf global para que aparesca mi correo
+$ git config --global user.email irvin.medina@softtek.com
+
+para configurar visual code como editor de git, el --wait es para que espere hasta que se cierre el editor cuando se ejecute
+$ git config --global core.editor "code --wait"
+
+muestrea el archivo de configuracion global
+$ git config --global -e
+
+
+Esta es una configuracion para salto de linea ya que en win se utiliza cr y lf y linux o mac solo usan lf
+$ got config --global core.autocrlf true   //en caso de estar usando mac se sustituye true por input
+
+
+este comando se utiliza para crear un repositorio y nos señala en que ruta se creo
+
+$ git init
+Initialized empty Git repository in C:/Users/irvin.medina/workspace/miweb/.git/
+
+aqui es donde se almacenaran las versiones de codigo ramas y demas archivos
+$ ls -a
+./  ../  HEAD  config  description  hooks/  info/  objects/  refs/
+
+
+Muestra el estado actual del repositorio
+$ git status
+
+se agrega a storage 
+$ git add holamundo.cs
+
+se guardan los cambios por asi decirlo, solo se pasan a la fase de commit
+$ git commit -m "commit a los cambios"
+
+
+eliminar archivos del repositorio
+
+$ rm hola.txt
+
+despues de eliminar el archivo lo agregamos a stage con add y despues comprometemos los cambios con commit
+
+si escribimos 
+$ git rm hola.txt
+
+automaticamente lo agrega a stage y solo queda hacerle un commit
+
+si queremos sacar un archivo de stage escibimos el sig comando
+$ git restore --stage hola.txt
+
+si lo hemos eliminado y lo queremos restaurar escribimos
+ 
+$ git restore hola.txt
+
+sacarlo de stage o recuperarlo de eliminar solo se puede hacer antes de hacer commit una vez echo commit ya no se podra
+
+
+para cambiar nombre, el primer elemento es el archivo original, el segundo es el nuevo nombre
+$ mv holamundo.cs hola.cs
+
+esto es para hacer el cambio y automaticamente agregarlo a stage
+$ git mv holamundo.cs hola.cs
+
+
+
+si no queremos hacer commit a un archivo se agregan en un archivo que llmaremos .gitignore, en este especificamos las rutas o archivos que queremos ignorar y luego agregamos a stage y hacemos commit a ese archivo
+
+
+mostrar los cambios que se han echo
+$ git diff
+
+muestra los cambios que se muestran en la etapa de stage
+$ git diff --stage
+
+
+
+revisar historial del repositorio
+
+$ git log
+
+$ git log --oneline
+
+
+
+para crear ramas (branch)
+verificamos en que rama estamos
+$ git branch
+
+creamos una nueva rama para trabajar y nos cambia automaticamente a esa rama
+$ git checkout -b ramanueva
+
+simplemente crea una nueva rama
+$ git checkout ramab     
+
+tambien sirve para cambiar de rama
+$ git checkout ramaprincipal
+
+
+
+para unir 2 ramas, primero debes estar en la rama principal
+ o en cualquier otra que no sea la que vallas a juntar ejem, 
+si quiero unir la rama principlar con la rama b, debo estar 
+en la rama principal para poder traer la rama b
+esto se hace con merge
+
+$ git merge ramaprincipal ramab
+
+
+este sirve para indicar si tendremos un servidor remoto y la direccion del repositorio a donde vamos a subir nuestros archios
+$ git remote add origin https://github.com/imedinar/Repos1.git
+
+este comando es para subir nuestros cambios con respecto a la rama que estamos trabando
+con este indicamos que rama subiremos, con -u creamos la rama con origin indicamos donde queremos que sea creada y nombramos la rama
+$ git push -u origin main
+
+
+si queremos agregar una rama pero no queremos hacerle merge con la principal lo que hacemos es crear una nueva rama
+$ git checkout -b ramac
+
+y despues hacemos push a esa rama
+$ git push -u origin ramac
+
+
+
+
+clonar un repositorio, para clonar o copiar un repositorio debemos de estar en la carpeta donde queremos copiar el repositorio, 
+seguido de eso necesitamos la url del repositorio a clonar, esta la encontramos en github
+
+$ git clone http://url/del/repo/a-clonar
+
+creara una carpeta con el nombre del repositorio y la guardaremos de manera local npm install es para instalar dependencias de proyectos de angular, npm run start para ejecutar el proyecto e angular, hacer cambios etc.
+
+
+
+un fork es un copia del repositorio original y sera independiente
+$ git remote add upstream <url>
+
+fetch and merge sincroniza el repositorio que hemos traido con fork con el original
+$ git fetch upstream
+$ git merge upstream/master
+
+
+busca los cambios y los actualiza desde el repositorioque forkeamos hasta el nuestro o viceversa
+
+$ git pull origin <nameBranch>
+
+
+
+
+
+764
